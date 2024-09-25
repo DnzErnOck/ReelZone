@@ -1,0 +1,24 @@
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    background-color: #000;
+  }
+  
+  div[data-nextjs-scroll-focus-boundary] {
+    height: 100%;
+  }
+  
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr min(1440px, 94%) 1fr;/* container grid olacak , sayfayı 3 e ayırıyoruz 1 fr sağdan soldan boşluk ortası da %94 */
+    grid-template-rows: 96px auto 72px;/*header 96px ortası auto footer da 72px olacak  */
+  }
+  
+  .container > * {
+    grid-column: 2;/* nesneleri 2. colunma alıyoruz ki sağdan sondan boşluk olsun kalan elementler de buraya gelsin min(1440px, 94%)  */
+  }
+  
+  .container > .fluid {
+    grid-column: 1 / -1; /* fluid contailerdaki boşlukları kaldırmak */
+  }
