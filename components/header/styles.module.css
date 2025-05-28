@@ -1,5 +1,7 @@
 .header {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    position: relative;
+    z-index: 10;
   }
   
   .headerWrapper {
@@ -24,4 +26,12 @@
     color: #fafafa;
     font-weight: 700;
     letter-spacing: 2px;
+  }
+
+  .navigationMenu a {
+    transition: color 0.2s ease;
+  }
+
+  .navigationMenu a:hover {
+    color: #ddd;
   }

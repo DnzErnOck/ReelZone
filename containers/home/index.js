@@ -1,30 +1,30 @@
 import React from 'react'
-import Movies from '@/mocks/movies.json'
-import Genres from '@/mocks/genres.json'
 import { FeaturedMovie } from '@/components/featured-movie'
 import { MoviesSection } from '@/components/movies-section'
 import { Categories } from '@/components/categories'
 
-function HomeContainer({selectedCategory}) {
+function HomeContainer({popularMovies=[] ,topRatedMovies=[],categories=[], selectedCategory}) {
   return (
     <div>
-        <FeaturedMovie movie={Movies.results[0]}/>
-        <Categories categories={Genres.genres.slice(0,5)}/>
+        <FeaturedMovie
+        movie={topRatedMovies[Math.floor(Math.random() * topRatedMovies.length)]}
+      />
+        <Categories categories={categories.slice(0,5)}/>
 
-        { selectedCategory.movies?.length > 0 && (
-          <MoviesSection 
-            title={Genres.genres.find(genre => `${genre.id}` === selectedCategory.id).name}
-            movies={selectedCategory.movies}
-          />
-        )}
+        {!!selectedCategory.movies.length && (
+        <MoviesSection
+          title={categories.find(({ id }) => id === +selectedCategory.id)?.name}
+          movies={selectedCategory.movies.slice(1, 7)}
+        />
+      )}
         
         <MoviesSection 
             title='Populer Films'
-            movies={Movies.results.slice(1,7)}
+            movies={popularMovies.slice(1,7)}
         />
         <MoviesSection 
-            title='Your Favorites'
-            movies={Movies.results.slice(7,13)}
+            title='Top Rated Films'
+            movies={topRatedMovies.slice(1,7)}
         />
     </div>
   )
